@@ -57,6 +57,15 @@ public class Program
 
         } while (userToAdd);
 
+        Console.WriteLine("Do you want to save the datas ? Press y is YES");
+        string userAnswer = LireDonee().ToLower();
+        
+
+        if (userAnswer.Equals("y"))
+        {
+            File.WriteAllText("C:\\Users\\nferrand\\Documents\\nomfichier.txt", myContainer.ExportToJSON());
+        }
+
     }
 
     private static string LireDonee()
