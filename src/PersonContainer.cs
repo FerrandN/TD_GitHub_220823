@@ -13,6 +13,10 @@ namespace src
 
         public List<Person> Persons { get => persons;}
 
+        public PersonContainer()
+        {
+            persons = new List<Person>();
+        }
         public PersonContainer(List<Person> initialPersons)
         {
             persons = initialPersons;
