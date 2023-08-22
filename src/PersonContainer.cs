@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace src
@@ -51,6 +52,11 @@ namespace src
         {
             this.persons.Sort((a, b) => a.Nom.CompareTo(b.Nom));
             return persons;
+        }
+
+        public string ExportToJSON()
+        {
+            return JsonSerializer.Serialize(persons);
         }
     }
 }
