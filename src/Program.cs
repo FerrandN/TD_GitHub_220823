@@ -30,7 +30,32 @@ public class Program
         myContainer.AjouterPersonne(personThree);
 
         //Ajout en boucle de personne dans la liste
+        bool userToAdd = true;
+        do
+        {
+            Console.WriteLine("Do you want to add a new User ? answer with y for YES and n for NO");
+            string answer = LireDonee().ToLower();
 
+            if(!answer.Equals("n") && !answer.Equals("y"))
+            {
+                Console.WriteLine("Wrong Answer, please answer with Y or N");
+            }
+
+            if (answer == "y")
+            {
+                Console.WriteLine("Entrez votre nom");
+                string name = LireDonee();
+                Console.WriteLine("Entrez votre prenom");
+                string surname = LireDonee();
+                Console.WriteLine(String.Format("l'utilisateur {0} {1} a été ajouté(e)", surname, name));
+                myContainer.AjouterPersonne(name,surname);
+            }
+            else
+            {
+                userToAdd = false;
+            }
+
+        } while (userToAdd);
 
     }
 
