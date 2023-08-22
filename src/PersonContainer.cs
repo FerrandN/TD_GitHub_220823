@@ -22,10 +22,12 @@ namespace src
             persons = initialPersons;
         }
 
-        public void AjouterPersonne(Person person)
+        public bool AjouterPersonne(Person person)
         {
-            if (!Exists(person.Nom, person.Prenom))
-                persons.Add(person);
+            if (Exists(person.Nom, person.Prenom))
+                return false;
+            persons.Add(person);
+            return true;
         }
 
         private bool Exists(string nom, string prenom)
@@ -33,12 +35,16 @@ namespace src
             return persons.FirstOrDefault(d=>d.Nom.Equals(nom) && d.Prenom.Equals(prenom)) != default;
         }
 
-        public void AjouterPersonne(string nom, string prenom)
+        public bool AjouterPersonne(string nom, string prenom)
         {
             if (nom.Trim() == "" || prenom.Trim() == "")
-                return;
+                return false;
             if (!Exists(nom, prenom))
+            {
                 persons.Add(new Person(nom, prenom));
+                return true;
+            }
+            return false;
         }
 
         public PersonContainer(params Person[] persons)
