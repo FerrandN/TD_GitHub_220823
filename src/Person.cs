@@ -9,9 +9,11 @@ namespace src
 
     public class Person
     {
-        string nom;
-        string prenom;
+        private string nom;
+        private string prenom;
 
+        public string Nom { get => nom; }
+        public string Prenom {  get=> prenom; }
         public Person(string _nom, string _prenom)
         {
             this.nom = _nom;

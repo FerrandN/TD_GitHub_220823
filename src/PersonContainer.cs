@@ -8,20 +8,30 @@ namespace src
 {
     public class PersonContainer : IPersonContainer
     {
-        List<Person> persons;
+        private List<Person> persons;
+
+        public List<Person> Persons { get => persons;}
 
         public PersonContainer(List<Person> initialPersons)
         {
+            persons = initialPersons;
+        }
 
+        public PersonContainer(params Person[] persons)
+        {
+            this.persons = persons.ToList();
+            
         }
         public List<Person> SortByFirstName()
         {
-            throw new NotImplementedException();
+            this.persons.Sort((a,b)=>a.Prenom.CompareTo(b.Nom));
+            return persons;
         }
 
         public List<Person> SortByLastName()
         {
-            throw new NotImplementedException();
+            this.persons.Sort((a, b) => a.Nom.CompareTo(b.Nom));
+            return persons;
         }
     }
 }
