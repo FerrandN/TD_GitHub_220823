@@ -17,6 +17,25 @@ namespace src
             persons = initialPersons;
         }
 
+        public void AjouterPersonne(Person person)
+        {
+            if (!Exists(person.Nom, person.Prenom))
+                persons.Add(person);
+        }
+
+        private bool Exists(string nom, string prenom)
+        {
+            return persons.FirstOrDefault(d=>d.Nom.Equals(nom) && d.Prenom.Equals(prenom)) != default;
+        }
+
+        public void AjouterPersonne(string nom, string prenom)
+        {
+            if (nom.Trim() == "" || prenom.Trim() == "")
+                return;
+            if (!Exists(nom, prenom))
+                persons.Add(new Person(nom, prenom));
+        }
+
         public PersonContainer(params Person[] persons)
         {
             this.persons = persons.ToList();
