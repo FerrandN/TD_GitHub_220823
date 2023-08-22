@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NuGet.Frameworks;
 using src;
 
 namespace TestUnitaires

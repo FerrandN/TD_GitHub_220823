@@ -28,6 +28,7 @@ namespace src
                 exist = Exists(p.Nom, p.Prenom);
                 if (!exist)
                     persons.Add(p);
+                i++;
             }
             if (exist)
                 throw new Exception("Erreur duplicata en entrée");
@@ -52,7 +53,11 @@ namespace src
 
         private bool Exists(string nom, string prenom)
         {
-            return persons.FirstOrDefault(d=>d.Nom.ToLower().Equals(nom.ToLower()) && d.Prenom.ToLower().Equals(prenom.ToLower())) != default;
+            Person? p = persons.FirstOrDefault(d =>
+            d.Nom.ToLower().Equals(nom.ToLower()) &&
+            d.Prenom.ToLower().Equals(prenom.ToLower()));
+            return p != default(Person);
+
         }      
         
         public List<Person> SortByFirstName()
