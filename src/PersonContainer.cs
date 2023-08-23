@@ -40,7 +40,7 @@ namespace src
 
         public bool AjouterPersonne(Person person)
         {
-            if (Exists(person.Nom, person.Prenom))
+            if (person == null || Exists(person.Nom, person.Prenom))
                 return false;
             persons.Add(person);
             return true;
@@ -48,6 +48,8 @@ namespace src
 
         public bool AjouterPersonne(string nom, string prenom)
         {
+            if (nom == null || nom.Trim().Equals("") || prenom == null || prenom.Trim().Equals(""))
+                return false;
             return AjouterPersonne(new Person(nom,prenom));
         }
 
@@ -62,7 +64,7 @@ namespace src
         
         public List<Person> SortByFirstName()
         {
-            this.persons.Sort((a,b)=>a.Prenom.CompareTo(b.Nom));
+            this.persons.Sort((a,b)=>a.Prenom.CompareTo(b.Prenom));
             return persons;
         }
 
