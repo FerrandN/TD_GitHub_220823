@@ -47,8 +47,14 @@ public class Program
                 string name = LireDonee();
                 Console.WriteLine("Entrez votre prenom");
                 string surname = LireDonee();
-                Console.WriteLine(String.Format("l'utilisateur {0} {1} a été ajouté(e)", surname, name));
-                myContainer.AjouterPersonne(name,surname);
+                if(myContainer.AjouterPersonne(name,surname))
+                {
+                    Console.WriteLine(String.Format("l'utilisateur {0} {1} a été ajouté(e)", surname, name));
+                }
+                else
+                {
+                    Console.WriteLine("L'utilisateur n'a pas été ajoutée, les valeurs sont incorrecte");
+                }
             }
             else
             {
