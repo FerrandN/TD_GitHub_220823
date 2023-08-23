@@ -17,6 +17,7 @@ namespace src
         {
             persons = new List<Person>();
         }
+        
         public PersonContainer(List<Person> initialPersons)
         {
             bool exist = false;
@@ -59,7 +60,6 @@ namespace src
             d.Nom.ToLower().Equals(nom.ToLower()) &&
             d.Prenom.ToLower().Equals(prenom.ToLower()));
             return p != default(Person);
-
         }      
         
         public List<Person> SortByFirstName()
